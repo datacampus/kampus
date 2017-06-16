@@ -6,6 +6,7 @@ RUN yum install net-tools -y
 RUN yum install crontabs -y
 RUN yum install man -y
 RUN yum install man-pages -y
+RUN yum install psmisc -y
 RUN yum install passwd openssl openssh-server -y
 RUN ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N '' 
 RUN ssh-keygen -q -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
