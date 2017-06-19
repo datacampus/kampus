@@ -14,14 +14,15 @@ RUN echo elasticsearch | passwd --stdin elasticsearch
 
 EXPOSE 22
 
-ADD elasticsearch.yml /usr/share/elasticsearch/config/
-ADD jvm.options /usr/share/elasticsearch/config/
+COPY .bash_profile /usr/share/elasticsearch/
+ADD  elasticsearch.yml /usr/share/elasticsearch/config/
+COPY jvm.options /usr/share/elasticsearch/config/
 USER root
-RUN chown elasticsearch:elasticsearch config/elasticsearch.yml
-RUN chown elasticsearch:elasticsearch config/jvm.options
+RUN chown elasticsearch:elasticsearch /usr/share/elasticsearch/.bash_profile
+RUN chown elasticsearch:elasticsearch /usr/share/elasticsearch/config/elasticsearch.yml
+RUN chown elasticsearch:elasticsearch /usr/share/elasticsearch/config/jvm.options
+
 USER elasticsearch
-
-
 COPY docker-entrypoint.sh /
 COPY prepare-exercise.sh /
 
