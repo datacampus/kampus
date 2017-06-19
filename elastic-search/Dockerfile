@@ -15,8 +15,10 @@ RUN echo elasticsearch | passwd --stdin elasticsearch
 EXPOSE 22
 
 ADD elasticsearch.yml /usr/share/elasticsearch/config/
+ADD jvm.options /usr/share/elasticsearch/config/
 USER root
 RUN chown elasticsearch:elasticsearch config/elasticsearch.yml
+RUN chown elasticsearch:elasticsearch config/jvm.options
 USER elasticsearch
 
 
