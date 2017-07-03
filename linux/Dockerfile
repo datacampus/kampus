@@ -2,6 +2,7 @@ FROM centos:latest
 MAINTAINER wangjiong@britecloudtech.com
 RUN echo root123 | passwd --stdin root
 RUN sed -i  's/tsflags=nodocs/#tsflags=nodocs/g' /etc/yum.conf
+RUN　sed -i 's/#PrintLastLog yes/PrintLastLog no/g' /etc/ssh/sshd_config
 RUN yum install net-tools -y
 RUN yum install crontabs -y
 RUN yum install man -y
